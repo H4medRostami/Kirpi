@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 
 
+# user serializer
 class UserSerializer(serializers.ModelSerializer):
 
     password = serializers.CharField(
@@ -27,6 +28,7 @@ class UserSerializer(serializers.ModelSerializer):
         return instance
 
 
+# admin side serializer
 class UserManagementSerializer(serializers.ModelSerializer):
 
     password = serializers.CharField(

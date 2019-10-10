@@ -9,12 +9,14 @@ from rest_framework import viewsets
 from factor.models import Factor
 
 
+# Pagination class using for divide rendering 100 per page
 class StandardResultsSetPagination(PageNumberPagination):
     page_size = 100
     # page_size_query_param = 'page_size'
     # max_page_size = 1000
 
 
+# Admin side CRUD operation
 class PaymentOperation(ModelViewSet):
     pagination_class = StandardResultsSetPagination
     throttle_classes = [throttling.AnonRateThrottle]
@@ -23,8 +25,9 @@ class PaymentOperation(ModelViewSet):
     queryset = Payment.objects.all()
 
 
+# Client side view set
 class PaymentList(viewsets.ViewSet):
-
+    """Fetch current user payments list"""
     pagination_class = StandardResultsSetPagination
     throttle_classes = [throttling.AnonRateThrottle]
     permission_classes = (permissions.IsAuthenticated,)

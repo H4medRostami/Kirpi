@@ -6,6 +6,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework import permissions
 
 
+# admin side CRUD operation view set
 class FactorOperation(ModelViewSet):
     throttle_classes = [throttling.AnonRateThrottle]
     permission_classes = (permissions.IsAdminUser, permissions.IsAuthenticated)

@@ -7,7 +7,7 @@ class Factor(models.Model):
     Description = models.TextField(blank=True)
     UserAddress = models.TextField()
     UserId = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
-    ShipmentStatus = models.BooleanField()
+    ShipmentStatus = models.BooleanField(default=False)
     ShipPrice = models.DecimalField(max_digits=6, decimal_places=2)
     OrderDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 

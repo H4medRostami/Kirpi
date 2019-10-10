@@ -6,8 +6,12 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 
 
+# User side operation :
 class SignUp(viewsets.ViewSet):
-
+    """
+       Sign up new users
+       Method: POST
+    """
     permission_classes = (permissions.AllowAny,)
 
     def create(self, request):
@@ -19,18 +23,19 @@ class SignUp(viewsets.ViewSet):
 
 
 class MyProfile(viewsets.ReadOnlyModelViewSet):
+    """
+         Fetch current user Profile information
+         Method : GET
+    """
     def list(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
-
-class UserManagement(viewsets.ModelViewSet):
-    permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser,)
-    serializer_class = UserManagementSerializer
-    queryset = User.objects.all()
-
-
 class EditMyProfile(viewsets.ViewSet):
+    """
+        Update current user record
+        Method: Patch
+    """
     permission_classes = (permissions.IsAuthenticated,)
     def partial_update(self, request, pk=None):
 
@@ -41,3 +46,15 @@ class EditMyProfile(viewsets.ViewSet):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# admin side operation :
+class UserManagement(viewsets.ModelViewSet):
+    """
+    CRUD operations for who has IsAdmin authentication
+    """
+    permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser,)
+    serializer_class = UserManagementSerializer
+    queryset = User.objects.all()
+
+

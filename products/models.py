@@ -8,3 +8,7 @@ class Products(models.Model):
     ProductQuantity = models.IntegerField()
     ProductPrice = models.DecimalField(max_digits=6, decimal_places=2)
     ProductDescription = models.TextField()
+
+    def __str__(self):
+        return f'{self.ProductId}{self.ProductPrice}'
+
