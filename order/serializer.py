@@ -28,6 +28,7 @@ class UserOrderSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data,):
         orders = validated_data.pop('orders')
+        # its for example if you have shipment policy or third-party transfer API , should be to implement this section.
         validated_data['ShipPrice'] = 12
         validated_data['ShipmentStatus'] = False
 
