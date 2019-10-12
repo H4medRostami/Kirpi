@@ -17,5 +17,7 @@ class Factor(models.Model):
             total += order.Price
         return total
 
-
+    def __str__(self):
+        return f'{self.FactorId}{self.Description}{self.UserAddress}' \
+               f'{self.UserId}{self.ShipmentStatus}{self.ShipPrice}{self.OrderDate}'
 

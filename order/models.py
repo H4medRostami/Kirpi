@@ -9,3 +9,7 @@ class Order(models.Model):
     Quantity = models.IntegerField()
     Price = models.DecimalField(max_digits=6, decimal_places=2)
     FactorId = models.ForeignKey(Factor, null=True, related_name='orders', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.OrderId}{self.ProductId}{self.Quantity}' \
+               f'{self.Price}{self.ProductId}{self.FactorId}'

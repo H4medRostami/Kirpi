@@ -10,5 +10,6 @@ class Products(models.Model):
     ProductDescription = models.TextField()
 
     def __str__(self):
-        return f'{self.ProductId}{self.ProductPrice}'
+        return f'{self.ProductName}{self.ProductDescription}{self.ProductQuantity}' \
+               f'{self.ProductPrice}{self.ProductId}{self.ProductImage}'
 
