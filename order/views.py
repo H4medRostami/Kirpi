@@ -28,7 +28,7 @@ class OrderOperation(ModelViewSet):
 
 
 class UserOrder(viewsets.ViewSet):
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def create(self, request):
         serializer = UserOrderSerializer(data=request.data)
