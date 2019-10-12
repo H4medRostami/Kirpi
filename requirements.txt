@@ -14,7 +14,7 @@ djangorestframework==3.10.3
 djangorestframework-simplejwt==4.3.0
 dnspython==1.16.0
 drf-yasg==1.16.1
-ecdsa==0.13.2
+ecdsa==0.13.3
 fasteners==0.15
 idna==2.8
 inflection==0.3.1
