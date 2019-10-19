@@ -30,6 +30,9 @@ class OrderOperation(ModelViewSet):
 class UserOrder(viewsets.ViewSet):
     permission_classes = (permissions.IsAuthenticated,)
 
+    def get_serializer(self):
+        return UserOrderSerializer()
+
     def create(self, request):
         serializer = UserOrderSerializer(data=request.data)
         result = user_failed_shops(request.user.id)

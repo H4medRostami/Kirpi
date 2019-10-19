@@ -30,9 +30,6 @@ ALLOWED_HOSTS = []
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-
-
-
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,6 +84,7 @@ REST_FRAMEWORK = {
         'anon': '100/min',
         'user': '1000000/min'
     },
+
 }
 
 TEMPLATES = [
@@ -106,6 +104,16 @@ TEMPLATES = [
     },
 ]
 
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

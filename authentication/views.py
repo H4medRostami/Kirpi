@@ -5,7 +5,6 @@ from rest_framework import permissions
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 
-
 # User side operation :
 class SignUp(viewsets.ViewSet):
     """
@@ -13,6 +12,9 @@ class SignUp(viewsets.ViewSet):
        Method: POST
     """
     permission_classes = (permissions.AllowAny,)
+
+    def get_serializer(self):
+        return UserSerializer()
 
     def create(self, request):
         serializer = UserSerializer(data=request.data)
@@ -27,6 +29,9 @@ class MyProfile(viewsets.ReadOnlyModelViewSet):
          Fetch current user Profile information
          Method : GET
     """
+    def get_serializer(self):
+        return UserSerializer()
+
     def list(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
@@ -37,6 +42,10 @@ class EditMyProfile(viewsets.ViewSet):
         Method: Patch
     """
     permission_classes = (permissions.IsAuthenticated,)
+
+    def get_serializer(self):
+        return UserSerializer()
+
     def partial_update(self, request, pk=None):
 
         queryset = User.objects.all()
