@@ -5,11 +5,13 @@ from rest_framework import permissions
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 
+
 # User side operation :
 class SignUp(viewsets.ViewSet):
     """
-       Sign up new users
-       Method: POST
+    Sign up new users
+
+    Authentication : (AllowAnyz)
     """
     permission_classes = (permissions.AllowAny,)
 
@@ -26,8 +28,9 @@ class SignUp(viewsets.ViewSet):
 
 class MyProfile(viewsets.ReadOnlyModelViewSet):
     """
-         Fetch current user Profile information
-         Method : GET
+    Fetch current user Profile information
+
+    Authentication : (IsAuthenticated)
     """
     def get_serializer(self):
         return UserSerializer()
@@ -36,10 +39,12 @@ class MyProfile(viewsets.ReadOnlyModelViewSet):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
+
 class EditMyProfile(viewsets.ViewSet):
     """
-        Update current user record
-        Method: Patch
+    Update current user record
+
+    Authentication : (IsAuthenticated)
     """
     permission_classes = (permissions.IsAuthenticated,)
 
@@ -60,7 +65,9 @@ class EditMyProfile(viewsets.ViewSet):
 # admin side operation :
 class UserManagement(viewsets.ModelViewSet):
     """
-    CRUD operations for who has IsAdmin authentication
+    CRUD operations on User model
+
+    Authentication : (IsAdmin, IsAuthenticated)
     """
     permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser,)
     serializer_class = UserManagementSerializer

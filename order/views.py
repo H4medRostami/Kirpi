@@ -21,6 +21,11 @@ def user_failed_shops(current_user):
 
 
 class OrderOperation(ModelViewSet):
+    """
+    CRUD operation over Order model
+
+    Authentication : (IsAdmin, IsAuthenticated)
+    """
     throttle_classes = [throttling.AnonRateThrottle]
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = OrderOperationSerializer
@@ -28,6 +33,11 @@ class OrderOperation(ModelViewSet):
 
 
 class UserOrder(viewsets.ViewSet):
+    """
+    user order some product and ready to final step[payment]
+
+    Authentication : (IsAuthenticated)
+    """
     permission_classes = (permissions.IsAuthenticated,)
 
     def get_serializer(self):

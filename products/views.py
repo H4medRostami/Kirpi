@@ -17,7 +17,11 @@ class StandardResultsSetPagination(PageNumberPagination):
 
 # Admin CRUD operation
 class ProductOperation(ModelViewSet):
+    """
+    CRUD operation on product model
 
+    Authentication : (IsAdmin, IsAuthenticated)
+    """
     pagination_class = StandardResultsSetPagination
     throttle_classes = [throttling.AnonRateThrottle]
     permission_classes = (permissions.IsAuthenticated,permissions.IsAdminUser)
@@ -27,7 +31,11 @@ class ProductOperation(ModelViewSet):
 
 # Client side view set  using to fetch products in clients like Web and smartphone app.
 class ProductList(mixins.ListModelMixin, GenericViewSet):
+    """
+    Fetch all products [used in clients]
 
+    Authentication : (AllowAny)
+    """
     pagination_class = StandardResultsSetPagination
     throttle_classes = [throttling.AnonRateThrottle]
     permission_classes = (permissions.AllowAny,)

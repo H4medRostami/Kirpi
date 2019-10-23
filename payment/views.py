@@ -18,6 +18,11 @@ class StandardResultsSetPagination(PageNumberPagination):
 
 # Admin side CRUD operation
 class PaymentOperation(ModelViewSet):
+    """
+    CRUD operation over Payment model
+
+    Authentication : (IsAdmin, IsAuthenticated)
+    """
     pagination_class = StandardResultsSetPagination
     throttle_classes = [throttling.AnonRateThrottle]
     permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser)
@@ -27,7 +32,11 @@ class PaymentOperation(ModelViewSet):
 
 # Client side view set
 class PaymentList(viewsets.ViewSet):
-    """Fetch current user payments list"""
+    """
+    Fetch current user payments list
+
+    Authentication : (IsAuthenticated)
+    """
     pagination_class = StandardResultsSetPagination
     throttle_classes = [throttling.AnonRateThrottle]
     permission_classes = (permissions.IsAuthenticated,)

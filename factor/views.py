@@ -8,6 +8,11 @@ from rest_framework import permissions
 
 # admin side CRUD operation view set
 class FactorOperation(ModelViewSet):
+    """
+    CRUD operation over Factor model
+
+    Authentication : (IsAdmin, IsAuthenticated)
+    """
     throttle_classes = [throttling.AnonRateThrottle]
     permission_classes = (permissions.IsAdminUser, permissions.IsAuthenticated)
     serializer_class = FactorSerializer
