@@ -11,7 +11,7 @@ class SignUp(viewsets.ViewSet):
     """
     Sign up new users
 
-    Authentication : (AllowAnyz)
+    Authentication : (AllowAny)
     """
     permission_classes = (permissions.AllowAny,)
 

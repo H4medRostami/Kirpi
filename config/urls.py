@@ -31,6 +31,7 @@ router.register(r'v1/order', UserOrder, basename='order')
 urlpatterns = [
         url(r'^v1/swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
         path('', include(router.urls)),
+
         url(r'^v1/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
         path('v1/api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
         path('v1/api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
