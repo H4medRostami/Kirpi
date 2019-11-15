@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'order',
     'factor',
     'payment',
+    'OpenNodeBTCGateway',
 
 ]
 
