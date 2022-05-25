@@ -46,7 +46,7 @@ protobuf==3.9.1
 psycopg2==2.8.3
 py==1.8.0
 pyaes==1.6.1
-PyJWT==1.7.1
+PyJWT==2.4.0
 pyparsing==2.4.2
 pytest==5.2.0
 python-dateutil==2.8.0
